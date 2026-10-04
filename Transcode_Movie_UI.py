@@ -3344,13 +3344,15 @@ def run_interface_self_test(app):
     geometry = app.geometry()
     app.geometry('1180x650')
     pump()
-    assert app.tree.winfo_height() >= 90, app.tree.winfo_height()
+    # Native font metrics vary; retain a heading and at least one full queue row.
+    assert app.tree.winfo_height() >= int(ttk.Style(app).lookup('Treeview', 'rowheight')) + 30, app.tree.winfo_height()
     app.output_format_var.set(FORMAT_BLURAY)
     app.on_output_format_selected()
     app.output_rate_var.set(RATE_CUSTOM)
     app.on_output_rate_selected()
     pump()
-    assert app.tree.winfo_height() >= 90, app.tree.winfo_height()
+    # Native font metrics vary; retain a heading and at least one full queue row.
+    assert app.tree.winfo_height() >= int(ttk.Style(app).lookup('Treeview', 'rowheight')) + 30, app.tree.winfo_height()
     app.load_preset_values('Automatic (recommended)')
     app.geometry(geometry)
     pump()
