@@ -1,0 +1,12 @@
+# External tools and services
+
+Library Studio's MIT license applies to its source, documentation and library-mark artwork. It does not relicense external software.
+
+- **HandBrakeCLI** is a separate executable, not included in the public release ZIP. See [HandBrake's license](https://github.com/HandBrake/HandBrake/blob/master/COPYING) and [official releases/source](https://github.com/HandBrake/HandBrake/releases). Managed downloads preserve license files and `source.json` with the download URL and checksum. If you redistribute HandBrake, include its applicable notices and corresponding-source arrangements.
+- **FFmpeg** is a separate executable, not included in the public release ZIP. Its license depends on the build and enabled components; see [FFmpeg legal information](https://ffmpeg.org/legal.html). Windows downloads use the [Gyan builds](https://www.gyan.dev/ffmpeg/builds/), which have their own build configuration and license requirements. Downloading a binary does not change its license.
+- **Python and Tcl/Tk** are included by PyInstaller in native app builds. `build.py` copies notices from the active Python runtime into the release's `licenses/runtime/` folder and fails if Python/Tcl/Tk notices cannot be located. See [Python's license](https://docs.python.org/3/license.html) and the copied Tcl/Tk notices.
+- **PyInstaller** builds the native executables. Its bootloader has an exception permitting distribution of applications under their chosen license. See [PyInstaller license and exception](https://pyinstaller.org/en/stable/license.html).
+- **MusicBrainz** provides optional disc metadata. The application limits requests, supports manual metadata and does not require the service to rip audio. See [MusicBrainz API](https://musicbrainz.org/doc/MusicBrainz_API) and [MetaBrainz service/account terms](https://metabrainz.org/supporters/account-type). Public builds should identify a real maintainer/repository in their User-Agent.
+- **IMDb suggestion endpoint** is used for optional year lookup. It is an external service whose availability and responses are not guaranteed; manual title/year entry and disabling lookup remain supported.
+
+The source and public app packages omit downloaded HandBrake/FFmpeg binaries, personal settings, library paths and media. The in-app portable export can include tools a user downloaded; that export must retain their notices and source information.
