@@ -3092,7 +3092,6 @@ class TranscodeMovieUI(tk.Tk):
             active.append('Tool setup: working')
         self.background_status.set('\n'.join(active) or 'All tasks idle')
         self.after(100, self.process_log_queue)
-        self.after(250, self.first_run_hint)
 
     def clear_log(self):
         self.log_text.delete("1.0", "end")

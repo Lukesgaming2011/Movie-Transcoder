@@ -2,6 +2,8 @@
 
 ## 0.9.1
 
+- Run the first-use setup hint once, so computers without HandBrakeCLI can navigate away from Tool setup.
+
 - Isolated interface checks suppress the delayed first-run tool-setup redirect, so machines without HandBrake can validate navigation reliably.
 - Native CI keeps and prints failure diagnostics. Normal first-run setup remains enabled.
 
