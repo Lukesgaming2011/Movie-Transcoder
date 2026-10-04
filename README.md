@@ -14,9 +14,10 @@ The UI includes smooth page transitions, progress updates and navigation feedbac
 
 ## Downloads
 
-- [Windows app ZIP](downloads/LibraryStudio-0.9.0-Windows-x64.zip?raw=true) — extract and run LibraryStudio.exe.
+- [Windows app ZIP](downloads/LibraryStudio-0.9.1-Windows-x64.zip?raw=true) — extract and run LibraryStudio.exe.
 - [Windows executable](LibraryStudio.exe?raw=true) — Python is included.
 - [Python source](Transcode_Movie_UI.py) — requires Python 3.10+ and Tcl/Tk.
+- [macOS and Linux builds](https://github.com/Lukesgaming2011/Movie-Transcoder/actions/workflows/build.yml) — open the latest successful run and download the matching artifact (GitHub sign-in required).
 
 The Windows download includes runtime notices. HandBrakeCLI is installed through Tool setup on first use.
 
@@ -43,8 +44,8 @@ The movie progress panel shows estimated time left for the current file and the 
 | System | Movies | GPU selection | Audio CD ripping | Tool installation |
 | --- | --- | --- | --- | --- |
 | Windows 10/11 x64 | Tested here | NVIDIA NVENC, AMD VCN, Intel QSV, CPU | Windows implementation | Verified downloads or choose existing tools |
-| macOS | Source/build support; needs native testing | Apple VideoToolbox or CPU, when advertised by HandBrake | Currently unavailable | Install native HandBrakeCLI and choose it |
-| Linux desktop | Source/build support; needs native testing | NVIDIA, AMD, Intel or CPU, depending on HandBrake build/drivers | Currently unavailable | Install native HandBrakeCLI and choose it |
+| macOS | Native build/UI checks pass; encoding needs testing | Apple VideoToolbox or CPU, when advertised by HandBrake | Currently unavailable | Install native HandBrakeCLI and choose it |
+| Linux desktop | Native build/UI checks pass; encoding needs testing | NVIDIA, AMD, Intel or CPU, depending on HandBrake build/drivers | Currently unavailable | Install native HandBrakeCLI and choose it |
 
 **Automatic (GPU preferred)** checks the encoder list provided by the local HandBrakeCLI. It prefers NVIDIA, AMD, Intel, then Apple, and uses CPU when no compatible GPU encoder is available. Selection is per codec: a GPU that supports H.264 may still need CPU for 10-bit HEVC. Hardware availability depends on the HandBrake build, GPU and driver; owning a GPU does not guarantee that its encoder is supported.
 
@@ -116,7 +117,7 @@ The UI check requires a graphical desktop; Linux CI uses Xvfb. Tests use tempora
 
 Push this source folder, not your personal app-data folders, backups, virtual environment or movie files. Create a GitHub Release and attach the appropriate native build ZIPs. Source code is MIT licensed; external tools retain their own licenses. Configure the MusicBrainz User-Agent contact through `LIBRARY_STUDIO_CONTACT` (your public repository URL or maintainer email) for your published build. Review [THIRD_PARTY.md](THIRD_PARTY.md) when distributing additional tools.
 
-Local verification: 21 unit tests, format/bitrate interaction checks, compact-window/page/theme/animation checks, exact-copy/cancellation and GPU fallback checks. Version 0.8.0 also passed real 1080p and 4K NVIDIA, AMD and CPU conversions on Windows. Intel/Apple selection is covered by simulated capability tests; native Intel, macOS and Linux validation remains to be done.
+Local verification: 21 unit tests, format/bitrate interaction checks, compact-window/page/theme/animation checks, exact-copy/cancellation and GPU fallback checks. Version 0.8.0 also passed real 1080p and 4K NVIDIA, AMD and CPU conversions on Windows. Intel/Apple selection is covered by simulated capability tests; native Intel/Apple encoding and real macOS/Linux conversion validation remain to be done. Native Windows, Linux and macOS builds and UI checks run in GitHub Actions.
 
 ## License
 
