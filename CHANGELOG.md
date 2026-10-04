@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.1
+
+- Isolated interface checks suppress the delayed first-run tool-setup redirect, so machines without HandBrake can validate navigation reliably.
+- Native CI keeps and prints failure diagnostics. Normal first-run setup remains enabled.
+
 ## 0.9.0
 
 - All animations share a frame timer with drawing-time compensation.

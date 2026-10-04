@@ -74,4 +74,3 @@ jobs:
             dist/*.sha256
             build/ui-report.json
           if-no-files-found: warn
-

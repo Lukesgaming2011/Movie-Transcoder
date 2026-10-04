@@ -116,7 +116,7 @@ The UI check requires a graphical desktop; Linux CI uses Xvfb. Tests use tempora
 
 Push this source folder, not your personal app-data folders, backups, virtual environment or movie files. Create a GitHub Release and attach the appropriate native build ZIPs. Source code is MIT licensed; external tools retain their own licenses. Configure the MusicBrainz User-Agent contact through `LIBRARY_STUDIO_CONTACT` (your public repository URL or maintainer email) for your published build. Review [THIRD_PARTY.md](THIRD_PARTY.md) when distributing additional tools.
 
-Local verification: 16 unit tests, format/bitrate interaction checks, compact-window/page/theme/animation checks, exact-copy/cancellation and GPU fallback checks. Version 0.8.0 also passed real 1080p and 4K NVIDIA, AMD and CPU conversions on Windows. Intel/Apple selection is covered by simulated capability tests; native Intel, macOS and Linux validation remains to be done.
+Local verification: 21 unit tests, format/bitrate interaction checks, compact-window/page/theme/animation checks, exact-copy/cancellation and GPU fallback checks. Version 0.8.0 also passed real 1080p and 4K NVIDIA, AMD and CPU conversions on Windows. Intel/Apple selection is covered by simulated capability tests; native Intel, macOS and Linux validation remains to be done.
 
 ## License
 

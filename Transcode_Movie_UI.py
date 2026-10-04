@@ -567,7 +567,7 @@ from pathlib import Path
 from collections import deque
 
 APP_NAME = 'Library Studio'
-APP_VERSION = '0.9.0'
+APP_VERSION = '0.9.1'
 
 
 def format_eta(seconds):
@@ -1563,7 +1563,10 @@ class TranscodeMovieUI(tk.Tk):
         self.bind('<Control-comma>', lambda e: self.open_settings())
         self.bind('<Escape>', lambda e: self.show_page('Movies'))
         self.after(100, self.process_log_queue)
-        self.after(250, self.first_run_hint)
+        # Automated page checks provide their own fixtures and intentionally need no tools.
+        # A delayed first-run redirect must not interrupt those navigation checks.
+        if '--self-test-report' not in sys.argv:
+            self.after(250, self.first_run_hint)
         self.compact_movies = None
         self.bind('<Configure>', self.resize_movies, add='+')
         self.after_idle(self.resize_movies)
