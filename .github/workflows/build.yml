@@ -1,0 +1,75 @@
+name: Test and build native apps
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            label: Windows-x64
+          - os: ubuntu-22.04
+            label: Linux-x64
+          - os: macos-14
+            label: macOS-arm64
+          - os: macos-15-intel
+            label: macOS-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        if: runner.os != 'Linux'
+        with:
+          python-version: '3.12'
+      - name: Install Linux GUI/runtime dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y python3-tk python3-venv xvfb
+      - name: Create build environment
+        shell: bash
+        run: python3 -m venv .venv
+        if: runner.os != 'Windows'
+      - name: Create Windows build environment
+        if: runner.os == 'Windows'
+        run: python -m venv .venv
+      - name: Test and package Windows
+        if: runner.os == 'Windows'
+        run: |
+          .venv/Scripts/python -m pip install -r requirements-build.txt
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .venv/Scripts/python -m unittest discover -s tests -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .venv/Scripts/python Transcode_Movie_UI.py --self-test-report build/ui-report.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .venv/Scripts/python build.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test and package Linux/macOS
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          set -e
+          .venv/bin/python -m pip install -r requirements-build.txt
+          .venv/bin/python -m unittest discover -s tests -v
+          if [ "$RUNNER_OS" = "Linux" ]; then
+            xvfb-run -a .venv/bin/python Transcode_Movie_UI.py --self-test-report build/ui-report.json
+          else
+            .venv/bin/python Transcode_Movie_UI.py --self-test-report build/ui-report.json
+          fi
+          .venv/bin/python build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LibraryStudio-${{ matrix.label }}
+          path: |
+            dist/*.zip
+            dist/*.sha256
+            build/ui-report.json
+          if-no-files-found: error

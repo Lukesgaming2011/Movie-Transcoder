@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible Library Studio problem
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: App version and operating system
+      placeholder: Library Studio 0.8.0, Windows 11 x64
+    validations:
+      required: true
+  - type: input
+    id: encoder
+    attributes:
+      label: HandBrake version, GPU and selected processing mode
+      placeholder: HandBrake 1.11.2, RTX 5060 Ti, Automatic
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and expected result
+      description: Include selected profile, source resolution and the exact error.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Activity log
+      description: Export it from Settings → Activity. Remove private file paths before sharing. Do not attach movie files.

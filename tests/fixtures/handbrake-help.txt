@@ -1,0 +1,9 @@
+  -e, --encoder <string> Select video encoder:
+                               svt_av1
+                               nvenc_h264
+                               x264
+                               vce_h264
+                               x265_10bit
+                               vce_h265_10bit
+                               nvenc_h265_10bit
+       --encoder-preset <string> Choose encoder preset
