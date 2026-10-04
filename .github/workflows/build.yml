@@ -49,7 +49,7 @@ jobs:
           .venv/Scripts/python -m unittest discover -s tests -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           .venv/Scripts/python Transcode_Movie_UI.py --self-test-report build/ui-report.json
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($LASTEXITCODE -ne 0) { Get-Content build/ui-report.json; exit 1 }
           .venv/Scripts/python build.py
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Test and package Linux/macOS
@@ -60,16 +60,18 @@ jobs:
           .venv/bin/python -m pip install -r requirements-build.txt
           .venv/bin/python -m unittest discover -s tests -v
           if [ "$RUNNER_OS" = "Linux" ]; then
-            xvfb-run -a .venv/bin/python Transcode_Movie_UI.py --self-test-report build/ui-report.json
+            xvfb-run -a .venv/bin/python Transcode_Movie_UI.py --self-test-report build/ui-report.json || { cat build/ui-report.json; exit 1; }
           else
-            .venv/bin/python Transcode_Movie_UI.py --self-test-report build/ui-report.json
+            .venv/bin/python Transcode_Movie_UI.py --self-test-report build/ui-report.json || { cat build/ui-report.json; exit 1; }
           fi
           .venv/bin/python build.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: LibraryStudio-${{ matrix.label }}
           path: |
             dist/*.zip
             dist/*.sha256
             build/ui-report.json
-          if-no-files-found: error
+          if-no-files-found: warn
+
