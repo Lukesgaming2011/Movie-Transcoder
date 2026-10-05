@@ -1,4 +1,4 @@
-Library Studio 0.9.1
+Library Studio 1.0.0
 
 Run LibraryStudio.exe on Windows 10/11 x64. Python is included.
 The updated Python source is Transcode_Movie_UI.py.
@@ -13,9 +13,9 @@ DVD 480p remains; DVD 576p is removed. Original Quality copies the complete MKV 
 Movie year lookup, bonus features, surround audio, CD ripping, themes and animations are retained.
 Activity: save troubleshooting logs, with local paths removed before sharing.
 
-For GitHub: extract LibraryStudio-0.9.1-GitHub-source.zip and upload the extracted source contents.
+For GitHub: extract LibraryStudio-1.0.0-GitHub-source.zip and upload the extracted source contents.
 MIT license, README, tests, native build script and Windows/macOS/Linux GitHub Actions workflow included.
-Publish LibraryStudio-0.9.1-Windows-x64.zip as the Windows download in a GitHub Release.
+Publish LibraryStudio-1.0.0-Windows-x64.zip as the Windows download in a GitHub Release.
 The Windows executable runs only on Windows. macOS/Linux need native builds or Python source;
 their support is not yet verified on native machines. Audio CD ripping is Windows only.
 Automatic tool downloads are Windows x64 only; other systems choose installed native tools.
