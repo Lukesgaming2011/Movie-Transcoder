@@ -14,8 +14,10 @@ The UI includes smooth page transitions, progress updates and navigation feedbac
 
 ## Downloads
 
-- [Windows app ZIP](downloads/LibraryStudio-0.9.1-Windows-x64.zip?raw=true) — extract and run LibraryStudio.exe.
-- [Windows executable](LibraryStudio.exe?raw=true) — Python is included.
+[Version 1.0.0 release and all downloads](https://github.com/Lukesgaming2011/Movie-Transcoder/releases/tag/v1.0.0).
+
+- [Windows app ZIP](https://github.com/Lukesgaming2011/Movie-Transcoder/releases/download/v1.0.0/LibraryStudio-1.0.0-Windows-x64.zip) — extract and run LibraryStudio.exe.
+- [Windows executable](https://github.com/Lukesgaming2011/Movie-Transcoder/releases/download/v1.0.0/LibraryStudio.exe) — Python is included.
 - [Python source](Transcode_Movie_UI.py) — requires Python 3.10+ and Tcl/Tk.
 - [macOS and Linux builds](https://github.com/Lukesgaming2011/Movie-Transcoder/actions/workflows/build.yml) — open the latest successful run and download the matching artifact (GitHub sign-in required).
 

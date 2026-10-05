@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0
+
+- First public release with Windows executable, Python source and native build workflow.
+- Quality/resolution controls, automatic GPU selection, movie-year naming, extras and batch ETA.
+- Smooth shared-timer animations, reduced-motion setting and first-use setup fixes.
+
 ## 0.9.1
 
 - Run the first-use setup hint once, so computers without HandBrakeCLI can navigate away from Tool setup.

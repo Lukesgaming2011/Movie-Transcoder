@@ -567,7 +567,7 @@ from pathlib import Path
 from collections import deque
 
 APP_NAME = 'Library Studio'
-APP_VERSION = '0.9.1'
+APP_VERSION = '1.0.0'
 
 
 def format_eta(seconds):
